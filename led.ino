@@ -1,6 +1,7 @@
 #define REDLED 0
 #define YELLOWLED 1
 #define GREENLED 2
+#define BUZZER 3
 
 #define rxPin 7 // Teensy pin 7 <--> HC-05 Tx
 #define txPin 8 // Teensy pin 8 <--> HC-05 Rx
@@ -13,6 +14,7 @@ void setup()
   pinMode(REDLED, OUTPUT);
   pinMode(YELLOWLED, OUTPUT);
   pinMode(GREENLED, OUTPUT);
+  pinMode(BUZZER, OUTPUT);
   Serial1.begin(9600);   // Setup Serial1 for BlueTooth
 }
 
@@ -26,30 +28,36 @@ void loop()
     Serial.println(component_componentStatus);
     
     if(component_componentStatus == "RL_ON")
-    {
-    digitalWrite(REDLED, HIGH);
-    }
+      {
+        digitalWrite(REDLED, HIGH);
+      }
     else if(component_componentStatus == "RL_OFF")
-    {
-    digitalWrite(REDLED, LOW);
-    }
-    
+      {
+        digitalWrite(REDLED, LOW);
+      }
     if(component_componentStatus == "GL_ON")
-    {
-    digitalWrite(GREENLED, HIGH);
-    }
+      {
+        digitalWrite(GREENLED, HIGH);
+      }
     else if(component_componentStatus == "GL_OFF")
-    {
-    digitalWrite(GREENLED, LOW);
-    }
-    
+      {
+        digitalWrite(GREENLED, LOW);
+      }
     if(component_componentStatus == "YL_ON")
-    {
-    digitalWrite(YELLOWLED, HIGH);
-    }
+      {
+        digitalWrite(YELLOWLED, HIGH);
+      }
     else if(component_componentStatus == "YL_OFF")
-    {
-    digitalWrite(YELLOWLED, LOW);
-    }
+      {
+        digitalWrite(YELLOWLED, LOW);
+      }
+    if(component_componentStatus == "BUZZ_ON")
+      {
+        digitalWrite(BUZZER, HIGH);
+      }
+    else if(component_componentStatus == "BUZZ_OFF")
+      {
+        digitalWrite(BUZZER, LOW);
+      }
   }
 }
